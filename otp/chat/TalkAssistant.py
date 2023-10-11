@@ -621,8 +621,7 @@ class TalkAssistant(DirectObject.DirectObject):
             messenger.send('magicWord', [message])
             self.receiveDeveloperMessage(message)
         elif message.startswith('!') and len(message) > 0:
-            message = "System: " + message[1:] # remove first char and add "System: " to my message
-            base.localAvatar.sendUpdate('sendGlobalChat', [message])
+            base.localAvatar.sendUpdate('sendGlobalChat', [message[1:]]) #sends the message without !
         else:
             chatFlags = CFSpeech | CFTimeout
             if self.isThought(message):
