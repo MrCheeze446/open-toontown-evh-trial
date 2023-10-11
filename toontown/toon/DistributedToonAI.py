@@ -742,6 +742,7 @@ class DistributedToonAI(DistributedPlayerAI.DistributedPlayerAI, DistributedSmoo
         self.d_setMaxAccessories(max)
 
     def sendGlobalChat(self, message):
+        message = f"{self.getName()}: {message}"
         for player in simbase.air.doId2do.values():
             if not isinstance(player, DistributedToonAI) or not player.isPlayerControlled():
                 continue
