@@ -53,6 +53,7 @@ from toontown.toonbase import ToontownGlobals
 from toontown.tutorial.TutorialManagerAI import TutorialManagerAI
 from toontown.uberdog.DistributedInGameNewsMgrAI import DistributedInGameNewsMgrAI
 from toontown.chat.TTWhiteList import TTWhiteList
+from toontown.chat import ToonChatGarbler
 import os
 
 
@@ -102,6 +103,7 @@ class ToontownAIRepository(ToontownInternalRepository):
         self.buildingManagers = {}
         self.suitPlanners = {}
         self.whiteList = TTWhiteList()
+        self.chatGarbler = ToonChatGarbler.ToonChatGarbler()
 
     def handleConnected(self):
         ToontownInternalRepository.handleConnected(self)

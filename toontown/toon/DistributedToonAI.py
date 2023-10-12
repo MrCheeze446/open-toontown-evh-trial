@@ -751,7 +751,7 @@ class DistributedToonAI(DistributedPlayerAI.DistributedPlayerAI, DistributedSmoo
             if word == '' or simbase.air.whiteList.isWord(word):
                 newwords.append(word)
             else:
-                newwords.append(simbase.air.whiteList.defaultWord)
+                newwords.append(simbase.air.chatGarbler.garbleSingle(self, text))
 
         newText = ' '.join(newwords)
         return newText
