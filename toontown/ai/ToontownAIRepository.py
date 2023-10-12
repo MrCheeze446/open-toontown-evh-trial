@@ -52,6 +52,7 @@ from toontown.toon import NPCToons
 from toontown.toonbase import ToontownGlobals
 from toontown.tutorial.TutorialManagerAI import TutorialManagerAI
 from toontown.uberdog.DistributedInGameNewsMgrAI import DistributedInGameNewsMgrAI
+from toontown.chat.TTWhiteList import TTWhiteList
 import os
 
 
@@ -100,6 +101,7 @@ class ToontownAIRepository(ToontownInternalRepository):
         self.hoods = []
         self.buildingManagers = {}
         self.suitPlanners = {}
+        self.whiteList = TTWhiteList()
 
     def handleConnected(self):
         ToontownInternalRepository.handleConnected(self)

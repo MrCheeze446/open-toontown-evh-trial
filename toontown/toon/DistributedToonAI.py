@@ -741,7 +741,22 @@ class DistributedToonAI(DistributedPlayerAI.DistributedPlayerAI, DistributedSmoo
         self.setMaxAccessories(max)
         self.d_setMaxAccessories(max)
 
+    # I just stole this from talkAssistant
+    def whiteListFilterMessageAI(self, text):
+        if not simbase.air.whiteList:
+            return 'no list'
+        words = text.split(' ')
+        newwords = []
+        for word in words:
+            if word == '' or simbase.air.whiteList.isWord(word):
+                newwords.append(word)
+            else:
+                newwords.append(simbase.air.whiteList.defaultWord)
+
+        newText = ' '.join(newwords)
+        return newText
     def sendGlobalChat(self, message):
+        message = self.whiteListFilterMessageAI(message) # filter my message
         message = f"{self.getName()}: {message}"
         for player in simbase.air.doId2do.values():
             if not isinstance(player, DistributedToonAI) or not player.isPlayerControlled():
